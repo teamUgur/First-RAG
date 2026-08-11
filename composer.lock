@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad47c7b6290ae4e1f63e72f0c589a413",
+    "content-hash": "31aacd352fa50680717651c7c512c49c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -156,6 +156,65 @@
                 "source": "https://github.com/aws/aws-sdk-php/tree/3.391.2"
             },
             "time": "2026-08-10T18:12:09+00:00"
+        },
+        {
+            "name": "benbjurstrom/markdown-object",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/benbjurstrom/markdown-object.git",
+                "reference": "15229fee6c5557f2bf09ca0c1bd6144db71858bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/benbjurstrom/markdown-object/zipball/15229fee6c5557f2bf09ca0c1bd6144db71858bb",
+                "reference": "15229fee6c5557f2bf09ca0c1bd6144db71858bb",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^2.7",
+                "php": "^8.3",
+                "yethee/tiktoken": "^0.11.1"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "pestphp/pest": "^4.0",
+                "phpstan/phpstan": "^2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BenBjurstrom\\MarkdownObject\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Bjurstrom",
+                    "email": "benbjurstrom@users.noreply.github.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Structure-aware, token-smart chunking for Markdown documents",
+            "homepage": "https://github.com/benbjurstrom/markdown-object",
+            "keywords": [
+                "benbjurstrom",
+                "markdown-object"
+            ],
+            "support": {
+                "issues": "https://github.com/benbjurstrom/markdown-object/issues",
+                "source": "https://github.com/benbjurstrom/markdown-object/tree/v0.6.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Ben Bjurstrom",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-11-24T15:56:05+00:00"
         },
         {
             "name": "brick/math",
@@ -6547,6 +6606,60 @@
                 }
             ],
             "time": "2026-04-26T05:33:54+00:00"
+        },
+        {
+            "name": "yethee/tiktoken",
+            "version": "0.11.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yethee/tiktoken-php.git",
+                "reference": "ea497a67e60fe3804e2e2294cb5984427655d859"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yethee/tiktoken-php/zipball/ea497a67e60fe3804e2e2294cb5984427655d859",
+                "reference": "ea497a67e60fe3804e2e2294cb5984427655d859",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "symfony/service-contracts": "^2.5 || ^3.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^13",
+                "mikey179/vfsstream": "^1.6.11",
+                "phpbench/phpbench": "^1.2",
+                "phpunit/phpunit": "^10.5.45",
+                "psalm/plugin-phpunit": "^0.19.2",
+                "vimeo/psalm": "6.10.0"
+            },
+            "suggest": {
+                "ext-ffi": "To allow use LibEncoder"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yethee\\Tiktoken\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP version of tiktoken",
+            "keywords": [
+                "bpe",
+                "decode",
+                "encode",
+                "openai",
+                "tiktoken",
+                "tokenizer"
+            ],
+            "support": {
+                "issues": "https://github.com/yethee/tiktoken-php/issues",
+                "source": "https://github.com/yethee/tiktoken-php/tree/0.11.1"
+            },
+            "time": "2025-08-12T16:02:00+00:00"
         }
     ],
     "packages-dev": [
