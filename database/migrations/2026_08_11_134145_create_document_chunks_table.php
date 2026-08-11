@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('source');
             $table->text('chunk_text');
-            $table->json('metadat')->nullable();
+            $table->json('metadata')->nullable();
 
             $table->vector('embedding', dimensions: 1536)->vectorIndex();
             $table->timestamps();

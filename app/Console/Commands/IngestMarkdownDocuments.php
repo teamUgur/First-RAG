@@ -10,8 +10,8 @@ use App\Services\MarkdownChunker;
 use Laravel\Ai\Embeddings;
 use Symfony\Component\Finder\Finder;
 
-#[Signature('app:ingest-markdown-documents')]
-#[Description('Command description')]
+#[Signature('app:ingest-markdown-documents {path}')]
+#[Description('Ingest markdown documents')]
 class IngestMarkdownDocuments extends Command
 {
     public function handle(MarkdownChunker $chunker)
@@ -24,7 +24,7 @@ class IngestMarkdownDocuments extends Command
         foreach ($files as $file)
         {
             $chunks = $chunker->chunk(
-                $file->getRelativePath(),
+                $file->getRelativePathname(),
                 $file->getContents(),
             );
 
@@ -36,7 +36,7 @@ class IngestMarkdownDocuments extends Command
             $response = Embeddings::for($texts)->generate();
 
             $chunks->each(fn ($chunk, $index) => DocumentChunk::create([
-                'source' => $file->getRelativePath(),
+                'source' => $file->getRelativePathname(),
                 'chunk_text' => $chunk['text'],
                 'metadata' => [
                     'heading' => $chunk['heading'],
