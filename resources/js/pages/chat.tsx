@@ -38,7 +38,9 @@ export default function Chat() {
                     Accept: 'application/json',
                     'X-CSRF-TOKEN':
                         document
-                            .querySelector<HTMLMetaElement>('meta[name="csrf-token"]')
+                            .querySelector<HTMLMetaElement>(
+                                'meta[name="csrf-token"]',
+                            )
                             ?.getAttribute('content') ?? '',
                 },
                 body: JSON.stringify({
@@ -93,8 +95,12 @@ export default function Chat() {
 
                         {isSidebarOpen && (
                             <div>
-                                <div className="text-sm font-semibold">Zonda AI</div>
-                                <div className="text-xs text-[#8c8c8c]">Document assistant</div>
+                                <div className="text-sm font-semibold">
+                                    Zonda AI
+                                </div>
+                                <div className="text-xs text-[#8c8c8c]">
+                                    Document assistant
+                                </div>
                             </div>
                         )}
                     </div>
@@ -110,7 +116,7 @@ export default function Chat() {
                             </button>
 
                             <section>
-                                <h2 className="mb-2 text-xs font-semibold uppercase text-[#a0a0a0]">
+                                <h2 className="mb-2 text-xs font-semibold text-[#a0a0a0] uppercase">
                                     History
                                 </h2>
 
@@ -120,8 +126,12 @@ export default function Chat() {
                             </section>
 
                             <section className="mt-auto border-t border-[#eeeeee] pt-4">
-                                <div className="text-xs uppercase text-[#a0a0a0]">Knowledge base</div>
-                                <div className="mt-1 text-sm text-[#626262]">storage/app</div>
+                                <div className="text-xs text-[#a0a0a0] uppercase">
+                                    Knowledge base
+                                </div>
+                                <div className="mt-1 text-sm text-[#626262]">
+                                    storage/app
+                                </div>
                             </section>
                         </div>
                     )}
@@ -130,9 +140,12 @@ export default function Chat() {
                 <section className="flex min-w-0 flex-1 flex-col">
                     <header className="flex h-16 items-center justify-between border-b border-[#eeeeee] bg-white px-8">
                         <div>
-                            <h1 className="text-base font-semibold">Chat with Zonda documents</h1>
+                            <h1 className="text-base font-semibold">
+                                Chat with Zonda documents
+                            </h1>
                             <p className="text-xs text-[#8c8c8c]">
-                                Answers are generated from retrieved document context.
+                                Answers are generated from retrieved document
+                                context.
                             </p>
                         </div>
                         <div className="rounded-full border border-[#e4e4e4] bg-[#fbfbfa] px-3 py-1 text-xs text-[#777777]">
@@ -149,7 +162,9 @@ export default function Chat() {
                                             Ask Zonda anything
                                         </h2>
                                         <p className="mt-4 text-base leading-7 text-[#8c8c8c]">
-                                            This assistant searches your ingested Markdown documents before answering.
+                                            This assistant searches your
+                                            ingested Markdown documents before
+                                            answering.
                                         </p>
                                     </div>
                                 )}
@@ -170,9 +185,11 @@ export default function Chat() {
                                                     : 'mb-2 text-sm font-bold text-[#8a8a8a]'
                                             }
                                         >
-                                            {message.role === 'user' ? 'You' : 'Zonda Assistant'}
+                                            {message.role === 'user'
+                                                ? 'You'
+                                                : 'Zonda Assistant'}
                                         </div>
-                                        <p className="whitespace-pre-wrap text-[1.05rem] leading-8">
+                                        <p className="text-[1.05rem] leading-8 whitespace-pre-wrap">
                                             {message.content}
                                         </p>
                                     </article>
@@ -183,16 +200,23 @@ export default function Chat() {
                                         <div className="mb-2 text-sm font-bold text-[#8a8a8a]">
                                             Zonda Assistant
                                         </div>
-                                        <p className="text-[1.05rem] text-[#8c8c8c]">Thinking...</p>
+                                        <p className="text-[1.05rem] text-[#8c8c8c]">
+                                            Thinking...
+                                        </p>
                                     </article>
                                 )}
                             </section>
 
-                            <form onSubmit={ask} className="border-t border-[#eeeeee] bg-white py-6">
+                            <form
+                                onSubmit={ask}
+                                className="border-t border-[#eeeeee] bg-white py-6"
+                            >
                                 <div className="flex gap-3">
                                     <input
                                         value={question}
-                                        onChange={(event) => setQuestion(event.target.value)}
+                                        onChange={(event) =>
+                                            setQuestion(event.target.value)
+                                        }
                                         disabled={isLoading}
                                         placeholder="Ask something about Zonda..."
                                         className="min-w-0 flex-1 rounded-full border border-[#dddddd] bg-white px-6 py-4 text-base text-[#242424] shadow-sm outline-none placeholder:text-[#a0a0a0] focus:border-[#bdbdbd]"
