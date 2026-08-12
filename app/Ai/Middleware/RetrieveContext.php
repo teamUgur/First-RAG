@@ -2,10 +2,9 @@
 
 namespace App\Ai\Middleware;
 
-use Closure;
 use App\Models\DocumentChunk;
+use Closure;
 use Laravel\Ai\Prompts\AgentPrompt;
-use Laravel\Ai\Responses\AgentResponse;
 
 class RetrieveContext
 {
@@ -13,6 +12,7 @@ class RetrieveContext
         protected float $minSimilarity = 0.3,
         protected int $limit = 10,
     ) {}
+
     /**
      * Handle the incoming prompt.
      */
@@ -45,9 +45,9 @@ class RetrieveContext
                     Text:
                     {$chunk->chunk_text}
                     TEXT;
-                                })
-                    ->implode("\n\n---\n\n");
-            $prompt = $prompt->append(<<<PROMPT
+            })
+            ->implode("\n\n---\n\n");
+        $prompt = $prompt->append(<<<PROMPT
                 Retrieved document context:
 
                 {$context}

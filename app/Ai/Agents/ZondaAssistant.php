@@ -35,6 +35,7 @@ class ZondaAssistant implements Agent, Conversational, HasMiddleware
             new RetrieveContext(minSimilarity: 0.3, limit: 10),
         ];
     }
+
     /**
      * Get the instructions that the agent should follow.
      */
@@ -54,5 +55,4 @@ class ZondaAssistant implements Agent, Conversational, HasMiddleware
     {
         return [];
     }
-
 }

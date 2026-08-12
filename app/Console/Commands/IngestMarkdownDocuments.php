@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\DocumentChunk;
+use App\Services\MarkdownChunker;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
-use App\Models\DocumentChunk;
-use App\Services\MarkdownChunker;
 use Laravel\Ai\Embeddings;
 use Symfony\Component\Finder\Finder;
 
@@ -19,10 +19,9 @@ class IngestMarkdownDocuments extends Command
         $path = $this->argument('path');
         $files = Finder::create()->files()->name('*.md')->in($path);
 
-        $this->info('Files found: ' . count($files));
+        $this->info('Files found: '.count($files));
 
-        foreach ($files as $file)
-        {
+        foreach ($files as $file) {
             $chunks = $chunker->chunk(
                 $file->getRelativePathname(),
                 $file->getContents(),

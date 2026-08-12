@@ -9,7 +9,7 @@ use Inertia\Response;
 
 class ChatController extends Controller
 {
-    public function index() : Response
+    public function index(): Response
     {
         return inertia('chat');
     }
