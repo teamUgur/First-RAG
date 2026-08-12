@@ -23,6 +23,8 @@ class MarkdownChunker
     public function chunk(string $fileName, string $markdown) :Collection
     {
         $markdown = mb_scrub($markdown, 'UTF-8');
+        $markdown = preg_replace('/[\p{So}\x{FE0F}\x{200D}\x{20E3}]/u', '', $markdown) ?? $markdown;
+
         $document = ( new MarkdownParser($this->environment))->parse($markdown);
 
         $chunks = $this->builder
