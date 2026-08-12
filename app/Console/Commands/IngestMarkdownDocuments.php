@@ -14,7 +14,7 @@ use Symfony\Component\Finder\Finder;
 #[Description('Ingest markdown documents')]
 class IngestMarkdownDocuments extends Command
 {
-    public function handle(MarkdownChunker $chunker)
+    public function handle(MarkdownChunker $chunker): void
     {
         $path = $this->argument('path');
         $files = Finder::create()->files()->name('*.md')->in($path);

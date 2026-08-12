@@ -16,7 +16,7 @@ class RetrieveContext
     /**
      * Handle the incoming prompt.
      */
-    public function handle(AgentPrompt $prompt, Closure $next)
+    public function handle(AgentPrompt $prompt, Closure $next): mixed
     {
         $chunks = DocumentChunk::whereVectorSimilarTo(
             'embedding',

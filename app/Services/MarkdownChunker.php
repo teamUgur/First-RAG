@@ -6,15 +6,16 @@ use BenBjurstrom\MarkdownObject\Build\MarkdownObjectBuilder;
 use BenBjurstrom\MarkdownObject\Tokenizer\TikTokenizer;
 use Illuminate\Support\Collection;
 use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment\EnvironmentInterface;
 use League\CommonMark\Parser\MarkdownParser;
 
 class MarkdownChunker
 {
-    protected $environment;
+    protected EnvironmentInterface $environment;
 
-    protected $builder;
+    protected MarkdownObjectBuilder $builder;
 
-    protected $tokenizer;
+    protected TikTokenizer $tokenizer;
 
     public function __construct()
     {
@@ -23,6 +24,9 @@ class MarkdownChunker
         $this->tokenizer = TikTokenizer::forModel('text-embedding-3-small');
     }
 
+    /**
+     * @return Collection<int, array{text: non-empty-string, heading: string}>
+     */
     public function chunk(string $fileName, string $markdown): Collection
     {
         $markdown = mb_scrub($markdown, 'UTF-8');
@@ -34,6 +38,7 @@ class MarkdownChunker
             ->build($document, $fileName, $markdown, $this->tokenizer)
             ->toMarkdownChunks(target: 512, hardCap: 1024, tok: $this->tokenizer);
 
+        /** @var iterable<int, object{markdown: string, breadcrumb: array<int, string>}> $chunks */
         return collect($chunks)
             ->map(fn ($chunk) => [
                 'text' => trim($chunk->markdown),
